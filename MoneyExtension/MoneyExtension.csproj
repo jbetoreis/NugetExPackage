@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
 
     <PackageId>NugetExPackage</PackageId>
+    <Description>Pacote modelo desenvolvido para testes</Description>
   </PropertyGroup>
 
 </Project>
