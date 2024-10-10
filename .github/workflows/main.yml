@@ -26,4 +26,3 @@ jobs:
       
       - name: Deploy
         run: dotnet nuget push "MoneyExtension/bin/Release/*.nupkg" -k ${{ secrets.NUGETEXKEY }} -s https://api.nuget.org/v3/index.json
-
