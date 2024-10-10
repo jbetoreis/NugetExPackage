@@ -1,0 +1,28 @@
+name: "Deploy Project"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - name: Install .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      
+      - name: Compilation
+        run: dotnet build --configuration Release
+      
+      - name: Test
+        run: dotnet test
+      
+      - name: Create Package
+        run: dotnet pack --configuration Release
+      
+      - name: Deploy
+        run: dotnet nuget push "MoneyExtension/bin/Release/*.nupkg" -k ${{ NUGETEXKEY }} -s https://api.nuget.org/v3/index.json
